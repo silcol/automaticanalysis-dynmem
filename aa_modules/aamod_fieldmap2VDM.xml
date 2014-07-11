@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        <currenttask domain='subject' desc='Create VDMs in fieldmaps' modality='MRI'>
+            
+            <qsub>
+                <timeBase>0.5</timeBase>
+                <memoryBase>1</memoryBase>
+            </qsub>
+            
+            <permanenceofoutput>1</permanenceofoutput>
+            
+            <inputstreams>
+                <stream>epi</stream>
+                <stream>fieldmap</stream>
+                <stream>fieldmap_dicom_header</stream>
+            </inputstreams>
+            
+            <outputstreams>
+                <stream>fieldmap</stream>
+            </outputstreams>
+            
+            <fieldmap2session desc='optional vector of indices defining which fieldmaps should be used with which sessions'></fieldmap2session>
+            <nimages desc='number of fieldmap images (typically 3: mag, phase 1, phase 2)'>3</nimages>
+            <te1 desc='short TE'
+            ></te1>
+            <te2 desc='long TE'
+            ></te2>
+            <epifm desc='Is this an EPI fieldmap (most FMs are not!)? (0 for GRE)'
+            >0</epifm>
+            <tert desc='totalEPI read out time: Echo spacing * PE steps [Base Resolution] * Phase Partial Fourier / Accel. factor PE'
+            ></tert>
+            <kdir desc='blip direction of EPI (+1/-1); depends on Phase Enc. Dir. (e.g. P>A: 1, A>P: -1, L>R: 1, R>L: -1)'
+            ></kdir>
+            <mask desc='Mask brain?'
+            >0</mask>
+            <match desc='Match fieldmap to EPI?'
+            >1</match>
+            <writeunwarpedEPI desc='Write unwarped EPI?'
+            >0</writeunwarpedEPI>
+        </currenttask>
+    </tasklist>
+</aap>

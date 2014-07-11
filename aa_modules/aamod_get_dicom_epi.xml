@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        <currenttask domain='session' desc='Get DICOM files for EPIs'>
+            
+            <qsub>
+                <timeBase>0.4</timeBase>
+                <memoryBase>0.1</memoryBase>
+            </qsub>
+            
+            <permanenceofoutput>1</permanenceofoutput>
+            
+            <!-- Only accept first X scans where X=multipleof*floor(nscans/multipleof) -->
+            <!-- Used when scanning may have been truncated part way through a volume on GE -->
+            <multipleof>1</multipleof>
+            
+            <!-- Only take this many files -->
+            <ignoreafter>9999999</ignoreafter>
+            
+            <inputstreams>
+                <stream>autoidentifyseries</stream>
+            </inputstreams>
+            
+            <outputstreams>
+                <stream>dicom_epi</stream>
+            </outputstreams>
+            
+        </currenttask>
+    </tasklist>
+</aap>

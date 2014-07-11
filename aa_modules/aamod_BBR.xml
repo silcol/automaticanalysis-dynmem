@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        <currenttask domain='subject' desc='Runs BoundaryBasedRegistration...' modality='MRI'>
+            
+            <qsub>
+                <timeBase>0.5</timeBase>
+                <memoryBase>0.5</memoryBase>
+            </qsub>
+            
+            <permanenceofoutput>1</permanenceofoutput>
+            
+            <inputstreams>
+                <stream>meanepi</stream>
+                <stream>freesurfer</stream>
+            </inputstreams>
+            
+            <outputstreams>
+                <stream>bbrsurf</stream>
+            </outputstreams>
+            
+            <saveOutput>1</saveOutput>
+            <slicePercentage>45</slicePercentage>
+         
+            <bbrConfiguration>
+                <ReverseContrast desc='True for EPI, false for T1 [true/false]'
+                >1</ReverseContrast>
+                <ContrastMethod desc='Options: gradient, average'
+                >average</ContrastMethod>
+                <OptimisationMethod>GreveFischl</OptimisationMethod>
+                <Mode desc='Default: rst [all rotations, scaling, all translations]'
+                >rst</Mode>
+                <MinVertices desc='Minimal number of vertices to which we go down to'
+                >4000</MinVertices>
+                <MultipleLoops desc='Repeat procedure in the 6 different XYZ direction combinations? [true/false]'
+                >1</MultipleLoops>
+                <Accuracy desc='Minimum percentage of surface vertices to use for procedure'
+                >10</Accuracy>
+                <DynamicAccuracy desc='Increase proportion of surface vertices used as number of vertices falls? [true/false]'
+                >1</DynamicAccuracy>
+                <Display desc='Diagnostic stuff?'
+                >on</Display>
+                <BBR desc='Do we do Boundary Based Registration of surface to structural? [true/false]'
+                >1</BBR>
+                <TimeRequirement desc='How much time do we ask Torque for'
+                >1800</TimeRequirement>
+            </bbrConfiguration>
+            
+            <!-- Diagnostic videos? -->
+           <diagnostic 
+            desc='Diagnostic videos?
+            Yes [1] or No [0]?'
+            >0</diagnostic>
+           
+        </currenttask>
+    </tasklist>
+</aap>

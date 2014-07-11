@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        <currenttask domain='subject' mfile_alias = 'aamod_DMLT_roi_1st' desc='Use DMLT to classify data' modality='MRI'>
+            
+            
+            <qsub>
+                <timeBase>2</timeBase>
+                <memoryBase>0.8</memoryBase>
+            </qsub>
+            
+            <permanenceofoutput>2</permanenceofoutput>
+            
+            <inputstreams>
+                <!--
+                <stream>rois</stream>
+                -->
+                <stream>segmasksStrict</stream>
+                <stream>firstlevel_spm</stream>
+                <!--Depending on previous module (model or contrasts) we choose either betas or t-values -->
+                <stream>firstlevel_betas</stream>
+            </inputstreams>
+            
+            <outputstreams>
+                <stream>DMLT</stream>
+            </outputstreams>
+            
+            <!--SETTINGS-->
+            <!--Is the MVPA performed in native space? (0 - no, 1 - yes)-->
+            <native>1</native>
+            <!-- Which mask do we use? -->
+            <maskNum>1</maskNum>
+            <!-- Inclusive? (0 - no, 1 - yes) -->
+            <maskInclusive>1</maskInclusive>
+            <!-- Minimum number of valid voxels present in ROI (otherwise error)-->
+            <minVoxels>30</minVoxels>
+            <!-- Force equal number of conditions across blocks? -->
+            <constantFactors>1</constantFactors>
+            
+            <diagnostic>1</diagnostic>
+            
+            <!-- Empty structure to put DMLT vector in... -->
+            <model>
+                <subject></subject>
+                <DMLT>
+                    <name></name>
+                    <vector></vector>
+                    <object></object>
+                </DMLT>
+            </model>
+            
+        </currenttask>
+    </tasklist>
+</aap>

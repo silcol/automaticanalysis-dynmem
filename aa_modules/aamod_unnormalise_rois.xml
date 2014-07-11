@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        <currenttask domain='subject' mfile_alias='aamod_unnormalise_rois' desc='Unnormalise ROIs from MNI to native and GM mask them' modality='MRI'>
+            
+            <qsub>
+                <timeBase>0.2</timeBase>
+                <memoryBase>0.2</memoryBase>
+            </qsub>
+            
+            <permanenceofoutput>3</permanenceofoutput>
+            
+            <inputstreams>
+                <stream>meanepi</stream>
+                <stream>segmasksExclusive</stream>
+                <stream>normalisation_seg_inv_sn</stream>
+            </inputstreams>
+            <outputstreams>
+                <stream>rois</stream>
+            </outputstreams>
+            
+            <diagnostic>0</diagnostic>
+            
+            <maskNum>1</maskNum>
+            <ROIlist>Thresholded/Hippocampus_EC__P4.nii,Thresholded/Hippocampus_CA__P4.nii,Thresholded/Hippocampus_SUB__P4.nii</ROIlist>
+        
+        </currenttask>
+    </tasklist>
+</aap>
+   

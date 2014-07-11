@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        <currenttask domain='session' mfile_alias='aamod_tSNR_EPI' desc='Calculate tSNR from a set of EPI images' modality='MRI'>
+            
+            <qsub>
+                <timeBase>1</timeBase>
+                <memoryBase>1</memoryBase>
+            </qsub>
+            
+            <permanenceofoutput>2</permanenceofoutput>
+            
+            <inputstreams>
+                <stream>epi</stream>
+            </inputstreams>
+            
+            <outputstreams>
+                <stream>tSNR</stream>
+            </outputstreams>
+            
+            <chunks desc='Chunk data into n^3 pieces (default = 1)'
+            >1</chunks>
+            
+            <diagnostic>0</diagnostic>
+            
+        </currenttask>
+    </tasklist>
+</aap>

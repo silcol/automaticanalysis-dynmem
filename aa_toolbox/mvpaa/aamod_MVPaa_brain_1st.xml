@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        <currenttask domain='subject' mfile_alias='aamod_MVPaa_brain_1st' desc='1st level MVPaa Brain searchlight analysis' modality='MRI'>
+            
+            <qsub>
+                <timeBase>1</timeBase>
+                <memoryBase>1</memoryBase>
+            </qsub>
+            
+            <permanenceofoutput>1</permanenceofoutput>
+            
+            <inputstreams>
+                <!--
+                <stream>segmasksExclusive</stream>
+                -->
+                <!-- ONLY FOR RAW DATA...
+                <stream>realignment_parameter</stream>
+                -->
+                <stream>MVPaa_data</stream>
+                <stream>MVPaa_settings</stream>
+                <!--
+                <stream>epiBETmask</stream>
+                -->
+            </inputstreams>
+            <outputstreams>
+                <stream>MVPaa_1st</stream>
+            </outputstreams>
+            
+            <!--SETTINGS-->            
+            <chunking desc='Number of chunks to split the data into, in each dimension'>1</chunking>
+            <parallelisation desc='How to parallelise [serial, torque]'>serial</parallelisation>
+            
+            <!--Is the MVPA performed in native space? (0 - no, 1 - yes)-->
+            <native>1</native>
+            
+            <!-- Minimum number of valid voxels present in ROI (otherwise error)-->
+            <minVoxels>30</minVoxels>
+            
+            <!--Similarity measure type: 'Pearson', 'Spearman', 'Euclid', 'Mahalanobis' -->
+            <similarityMetric>Pearson</similarityMetric>
+            
+            <!-- Stats to be used in the MVPA:
+        'GLM' - GLM on average contrast matrix
+        'rmGLM' - repeated measures GLM on each block-subblock comparison
+        'fullGLM' - rmGLM considering all contrasts at once
+        'ttest' 'signrank' - t-test/signrank of data using contrast as reference
+        'con-ttest' 'con-signrank' - mean contrast value across subblocks, then t-tests on this
+        'all-ttest' 'all-signrank' - probably not recommended? CHECK! @@@@@ -->
+            <statsType>GLM</statsType>
+            
+            <!--GLM distribution-->
+            <GLMdist>normal</GLMdist>
+            
+            <!--Manner in which we balance contrasts: (0 - 0 baseline; 1 - equal intervals [DEFAULT])-->
+            <balanceContrasts>equalIntervals</balanceContrasts>
+            
+            <!--Triangulate the correlation data? For options, see mvpaa_statistics
+        This specifies which block-subblock comparisons are considered, and
+        whether they are averaged or not. More detail in... mvpaa_statisticsM-->
+            <triangulation>acrossSessions</triangulation>
+            
+            <!-- ROIradius: the radius of the ROI (0 = single voxel, 1 = ~7 voxels, etc.), 4 by [DEFAULT] -->
+            <ROIradius>4</ROIradius>
+            
+            <!-- Laterality: whether the searchlight is bilateral or unilateral... (0 - unilateral [DEFAULT], 1 - bilateral) -->
+            <ROIlaterality>0</ROIlaterality>        
+            
+            <!--If we have a masking procedure, should we mask by the GM - 1 [DEFAULT], WM - 2, or CSF - 3? -->
+            <maskNum>1</maskNum>
+            
+            <!--If we have a masking procedure, should we inclusively - 1 [DEFAULT] mask or exclusively - 0 -->
+            <maskInclusive>1</maskInclusive>
+            
+            <!-- DENOISING VARIABLES USED IN THE MODULE -->
+            <temporalDenoising></temporalDenoising>
+            <temporalDenoisingMatrix desc='Matrix used for temporal denoising of the similarity data'
+            ></temporalDenoisingMatrix>
+            <temporalDenoisingMode desc='session/subject'
+            >session</temporalDenoisingMode>
+            
+            <motionDenoising></motionDenoising>
+            <motionDenoisingMatrix desc='Matrix used for motion denoising of the similarity data'
+            ></motionDenoisingMatrix>
+            <motionDenoisingMode desc='session/subject'
+            >session</motionDenoisingMode>
+            
+            <regressBlock desc='Do we want to regress out the effect of Block [and thereby session]? 0 - No, 1 - Yes'
+            >1</regressBlock>
+            
+            <!-- Empty structure to put contrast matrices in... -->
+            <model>
+                <subject></subject>
+                <contrast>                
+                    <name></name>
+                    <matrix></matrix>
+                </contrast>
+                <temporal>
+                    <vector></vector>
+                    <transform></transform>
+                </temporal>
+            </model>
+            
+            <diagnostic>0</diagnostic>
+            
+        </currenttask>
+    </tasklist>
+</aap>

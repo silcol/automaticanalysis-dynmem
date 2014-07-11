@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        <currenttask domain='subject' mfile_alias='aamod_norm_noss' desc='SPM normalise estimate parameters (starting estimates for CBU 32 channel coil)' modality='MRI'>
+            
+            <qsub>
+                <timeBase>0.5</timeBase>
+                <memoryBase>1</memoryBase>
+            </qsub>
+            
+            <permanenceofoutput>-2</permanenceofoutput>
+            
+            <inputstreams>
+                <stream>meanepi</stream>
+            </inputstreams>
+            
+            <outputstreams>
+                <stream>segmentation</stream>
+            </outputstreams>
+            
+            <usesegmentnotnormalise>1</usesegmentnotnormalise>
+            <affinestartingestimate><x>0</x></affinestartingestimate>
+            
+            <structural desc='Which structural do we use, if there is more than one?'
+            >1</structural>
+            
+            <bias1stpass desc='1st pass with bias correction, to improve robustness'
+            >1</bias1stpass>
+            
+            <diagnostic>0</diagnostic>
+            
+        </currenttask>
+    </tasklist>
+</aap>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        <currenttask domain='subject' mfile_alias='aamod_freesurfer_gmmask_spmunion' desc='restrict EPI GM mask from Freesurfer to voxels in SPM analysis mask' modality='MRI'>
+            
+            <qsub>
+                <timeBase>0.5</timeBase>
+                <memoryBase>5</memoryBase>
+            </qsub>
+            
+            <permanenceofoutput>2</permanenceofoutput>
+            
+            <inputstreams>
+                <stream>freesurfer_gmmask</stream>
+                <stream>firstlevel_mask</stream>
+            </inputstreams>
+            
+            <outputstreams>
+                <stream>freesurfer_gmmask</stream>
+            </outputstreams>
+
+            <!-- Diagnostic videos? Verbosity? -->
+            <diagnostic desc='Do we display diagnostic videos?'
+            >0</diagnostic>
+            <verbose desc='Do we display Freesurfer output?'
+            >1</verbose>
+            
+        </currenttask>
+    </tasklist>
+</aap>

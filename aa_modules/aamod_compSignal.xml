@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        <currenttask domain='session' desc='SPM compartment signal' modality='MRI'>
+            
+            <qsub>
+                <timeBase>0.2</timeBase>
+                <memoryBase>0.3</memoryBase>
+            </qsub>
+            
+            <permanenceofoutput>-3</permanenceofoutput>
+            
+            <inputstreams>
+                <stream>epi</stream>
+                <stream>segmasksStrict</stream>
+                <stream>epiBETmask</stream>
+            </inputstreams>
+            
+            <outputstreams>
+                <stream>compSignal</stream>
+            </outputstreams>
+            
+            <W2Gdist desc='Distance between White Matter and Gray Matter'
+            >1</W2Gdist>
+            <C2Gdist desc='Distance between Cerebro-Spinal Fluid and Gray Matter'
+            ></C2Gdist>
+            <C2Sdist desc='Distance between Cerebro-Spinal Fluid and Skull'
+            >3</C2Sdist>
+            <C2Odist desc='Distance between Cerebro-Spinal Fluid and Out Of Head'
+            >5</C2Odist>
+            <maskOrder>GM,WM,CSF</maskOrder>
+            
+            <diagnostic>0</diagnostic>
+            
+        </currenttask>
+    </tasklist>
+</aap>

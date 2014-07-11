@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        <currenttask domain='subject' desc='Preprocess the MP2RAGE...' modality='MRI'>
+            
+            <qsub>
+                <timeBase>0.5</timeBase>
+                <memoryBase>0.5</memoryBase>
+            </qsub>
+            
+            <permanenceofoutput>1</permanenceofoutput>
+            
+            <inputstreams>
+                <stream>structural_dicom_header</stream>
+                <stream>structural</stream>
+            </inputstreams>
+            
+            <outputstreams>
+                <stream>structural</stream>
+            </outputstreams>
+            
+            <mode desc='sharp [cutoff at adaptive threshold] or soft [uses IC2 image as multiplier]'
+            >sharp</mode>
+            
+            <threshold 
+            desc='Constant intensity threshold for masking the IC2
+            [if left empty, we default to adaptive]'
+            ></threshold>
+            
+            <adaptiveWidth 
+            desc='Width of the averaging filter on the histogram
+            It should not be too narrow to avoid getting stuck in a local minimum'
+            >10</adaptiveWidth>
+            
+            <!-- Diagnostic videos? -->
+            <diagnostic 
+            desc='Diagnostic videos?
+            Yes [1] or No [2]?'
+            >0</diagnostic>
+            
+            <structural 
+            desc='Specify the indices of the InverseContrast2, and FlatImage, respectively
+            [typically 2 and 5 in the MP2RAGE sequence, but this may well vary]'
+            >2,5</structural>
+            
+        </currenttask>
+    </tasklist>
+</aap>

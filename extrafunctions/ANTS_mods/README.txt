@@ -1,0 +1,2 @@
+These two modified ANTS functions allow you to run the template creation in parallel using Torque qsub.
+To use them, you will need to copy these to native folder of ANTS (make sure you back up the original[s])!

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        <currenttask domain='subject' desc='define searchlight spheres for pilab Volume' modality='MRI'>
+            
+            <qsub>
+                <timeBase>0.5</timeBase>
+                <memoryBase>0.3</memoryBase>
+            </qsub>
+            
+            <permanenceofoutput>3</permanenceofoutput>
+
+            <searchlighttype>nvox</searchlighttype>
+            <searchlightparameter>100</searchlightparameter>
+            
+            <inputstreams>
+                <stream>pilab_volume</stream>
+            </inputstreams>
+            <outputstreams>
+                <stream>pilab_rois</stream>
+                <stream>pilab_searchlight_radius</stream>
+                <stream>pilab_searchlight_nvox</stream>
+                <stream>pilab_searchlight_nspheres</stream>
+            </outputstreams>
+            
+        </currenttask>
+    </tasklist>
+</aap>

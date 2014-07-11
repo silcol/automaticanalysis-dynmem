@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        <currenttask domain='subject' desc='Fit gldenoise model' modality='MRI'>
+            
+            <qsub>
+                <timeBase>0.5</timeBase>
+                <memoryBase>0.3</memoryBase>
+            </qsub>
+            
+            <permanenceofoutput>3</permanenceofoutput>
+
+            <ignorelabels>
+                <item></item>
+            </ignorelabels>
+            <K></K>
+            <F></F>
+            <hrfmodel>optimize</hrfmodel>
+            <hrfknobs></hrfknobs>
+            <opt>
+                <extraregressors></extraregressors>
+                <maxpolydeg></maxpolydeg>
+                <seed></seed>
+                <bootgroups></bootgroups>
+                <numforhrf></numforhrf>
+                <hrffitmask></hrffitmask>
+                <brainthresh></brainthresh>
+                <brainR2></brainR2>
+                <numpcstotry></numpcstotry>
+                <pcR2cutoff></pcR2cutoff>
+                <pcR2cutoffmask></pcR2cutoffmask>
+                <pcstop></pcstop>
+                <numboots></numboots>
+                <denoisespec></denoisespec>
+                <wantpercentbold></wantpercentbold>
+                <brainmask></brainmask>
+            </opt>
+
+            <inputstreams>
+                <!-- NB, we get volumes out of the (modified) SPM, not from
+                     epi stream -->
+                <stream>firstlevel_spm</stream>
+                <stream>epiBETmask</stream>
+            </inputstreams>
+            <outputstreams>
+                <stream>epiBETmask</stream>
+                <stream>glmdenoise_results_models</stream>
+                <stream>glmdenoise_results</stream>
+                <stream>glmdenoise_epi</stream>
+                <stream>glmdenoise_diagnostic_r2</stream>
+                <stream>glmdenoise_diagnostic_snr</stream>
+                <stream>glmdenoise_diagnostic_noisepool</stream>
+            </outputstreams>
+            
+        </currenttask>
+    </tasklist>
+</aap>

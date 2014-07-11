@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        <currenttask domain='subject' desc='Import gldenoise estimates to pilab Volume' modality='MRI'>
+            
+            <qsub>
+                <timeBase>0.5</timeBase>
+                <memoryBase>0.3</memoryBase>
+            </qsub>
+            
+            <permanenceofoutput>3</permanenceofoutput>
+
+            <tmap>0</tmap>
+            <minr2>-Inf</minr2>
+            <ignorelabels>
+                <item></item>
+            </ignorelabels>
+
+            <inputstreams>
+                <stream>glmdenoise_results</stream>
+                <stream>epiBETmask</stream>
+            </inputstreams>
+            <outputstreams>
+                <stream>pilab_volume</stream>
+                <stream>epiBETmask</stream>
+            </outputstreams>
+            
+        </currenttask>
+    </tasklist>
+</aap>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        <currenttask domain='subject' desc='import gldenoise to SPM' modality='MRI'>
+            
+            <qsub>
+                <timeBase>0.5</timeBase>
+                <memoryBase>0.3</memoryBase>
+            </qsub>
+            
+            <permanenceofoutput>3</permanenceofoutput>
+
+            <minr2>-Inf</minr2>
+            <domodel>0</domodel>
+            <masknonbrightvoxels>1</masknonbrightvoxels>
+
+            <inputstreams>
+                <!-- NB, we get volumes out of the (modified) SPM, not from
+                     epi stream -->
+                <stream>firstlevel_spm</stream>
+                <stream>epiBETmask</stream>
+                <stream>glmdenoise_epi</stream>
+                <stream>glmdenoise_results</stream>
+            </inputstreams>
+            <outputstreams>
+                <stream>epiBETmask</stream>
+                <stream>firstlevel_spm</stream>
+            </outputstreams>
+        </currenttask>
+    </tasklist>
+</aap>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        <currenttask domain='subject' mfile_alias='aamod_freesurfer_gmmask' desc='Make EPI GM mask from Freesurfer surfaces' modality='MRI'>
+            
+            <qsub>
+                <timeBase>0.5</timeBase>
+                <memoryBase>5</memoryBase>
+            </qsub>
+            
+            <permanenceofoutput>2</permanenceofoutput>
+            
+            <inputstreams>
+                <stream>freesurfer</stream>
+                <stream>meanepi</stream>
+            </inputstreams>
+            
+            <outputstreams>
+                <stream>freesurfer_gmmask</stream>
+            </outputstreams>
+
+            <maskthreshold>.4</maskthreshold>
+            <!-- 0.637 = 1.5 voxels FWHM -->
+            <smoothsigma>0</smoothsigma>
+            <!-- take out obvious black holes -->
+            <epithreshold>50</epithreshold>
+            
+            <!-- Diagnostic videos? Verbosity? -->
+            <diagnostic desc='Do we display diagnostic videos?'
+            >0</diagnostic>
+            <verbose desc='Do we display Freesurfer output?'
+            >1</verbose>
+            
+        </currenttask>
+    </tasklist>
+</aap>

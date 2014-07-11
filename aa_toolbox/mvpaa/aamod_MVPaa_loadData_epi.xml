@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        <currenttask domain='subject' mfile_alias='aamod_MVPaa_loadData' desc='1st level MVPaa Brain searchlight analysis' modality='MRI'>
+            
+            <qsub>
+                <timeBase>1</timeBase>
+                <memoryBase>1</memoryBase>
+            </qsub>
+            
+            <permanenceofoutput>1</permanenceofoutput>
+            
+            <inputstreams>
+                <!--Depending on previous module (model or contrasts) we choose either betas or t-values -->
+                <stream>epi</stream>
+            </inputstreams>
+            
+            <outputstreams>
+                <stream>MVPaa_data</stream>
+                <stream>MVPaa_settings</stream>
+            </outputstreams>
+            
+            <!--SETTINGS-->
+        
+            <!--Is the MVPA performed in native space? (0 - no, 1 - yes)-->
+            <native>1</native>
+            
+            <!-- Force equal number of conditions across blocks? -->
+            <constantFactors>1</constantFactors>
+            <!-- Force equal number of blocks across sessions? -->
+            <constantBlocks>1</constantBlocks>
+            <!-- Force equal number of conditions across sessions? -->
+            <constantSessions>1</constantSessions>
+            
+            <!-- Consider conditions in different sessions as unique/independent -->
+            <collapseFactors>0</collapseFactors>
+            
+            <diagnostic>0</diagnostic>
+            
+        </currenttask>
+    </tasklist>
+</aap>

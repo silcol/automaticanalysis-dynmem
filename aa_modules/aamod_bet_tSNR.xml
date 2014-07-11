@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        <currenttask domain='subject' desc='Apply EPI BET mask to tSNR image and transform resulting image into a graded mask' modality='MRI'>
+            
+            <qsub>
+                <timeBase>0.1</timeBase>
+                <memoryBase>0.2</memoryBase>
+            </qsub>
+            
+            <permanenceofoutput>2</permanenceofoutput>
+            
+            <inputstreams>
+                <stream>epiBETmask</stream>
+                <stream>tSNR</stream>
+            </inputstreams>
+            
+            <outputstreams>
+                <stream>tSNR</stream>
+            </outputstreams>
+            
+            <diagnostic>0</diagnostic>
+            
+            <sessions desc='Final tSNR images consists of an average of sessions... (leave empty if you want to average all sessions)?'></sessions>
+            
+            <maskBrain desc='Which mask do we use on the meanepi image with BET (if any)?'>brain_mask</maskBrain>
+            
+            <transform desc='Possibilities: none, ANTS (tSNR inverted and scaled from 0 to 1)'>ANTS</transform>
+            
+            
+        </currenttask>
+    </tasklist>
+</aap>
+

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        <currenttask domain='subject' desc='permutation test for data-predictor RDM comparison' modality='MRI'>
+            
+            <qsub>
+                <timeBase>0.5</timeBase>
+                <memoryBase>0.3</memoryBase>
+            </qsub>
+            
+            <permanenceofoutput>3</permanenceofoutput>
+
+            <nperms>10000</nperms>
+            <outputmode>searchlight</outputmode>
+            
+            <inputstreams>
+                <stream>pilab_data_rdms_mean</stream>
+                <stream>pilab_rsapredictors</stream>
+            </inputstreams>
+            <outputstreams>
+                <stream>pilab_r</stream>
+                <stream>pilab_p</stream>
+                <stream>pilab_p_fwe</stream>
+                <stream>pilab_nulldist</stream>
+            </outputstreams>
+            
+        </currenttask>
+    </tasklist>
+</aap>

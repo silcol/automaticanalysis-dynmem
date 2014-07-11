@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        <currenttask domain='session' desc='run tsdiffana' modality='MRI'>
+            
+            <qsub>
+                <timeBase>0.15</timeBase>
+                <memoryBase>3</memoryBase>
+            </qsub>
+            
+            <permanenceofoutput>3</permanenceofoutput>
+            
+            <inputstreams>
+                <stream>epi</stream>
+            </inputstreams>
+            
+            <outputstreams>
+                <stream>tsdiffana</stream>
+            </outputstreams>
+            
+        </currenttask>
+    </tasklist>
+</aap>

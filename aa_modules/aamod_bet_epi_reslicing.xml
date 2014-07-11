@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        <currenttask domain='subject' desc='Reslice BET mask to EPI space, and apply...' modality='MRI'>
+            
+            <qsub>
+                <timeBase>0.1</timeBase>
+                <memoryBase>0.2</memoryBase>
+            </qsub>
+            
+            <permanenceofoutput>2</permanenceofoutput>
+            
+            <inputstreams>
+                <stream>BETmask</stream>
+                <stream>meanepi</stream>
+            </inputstreams>
+            
+            <outputstreams>
+                <stream>epiBETmask</stream>
+                <stream>meanepi</stream>
+            </outputstreams>
+            
+            <diagnostic>0</diagnostic>
+            
+            <maskBrain desc='Which mask do we use on the meanepi image with BET (if any)?'>brain_mask</maskBrain>
+            
+        </currenttask>
+    </tasklist>
+</aap>
+

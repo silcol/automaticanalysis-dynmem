@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        <currenttask domain='study' mfile_alias='aamod_MVPaa_roi_2nd' desc='2nd level MVPaa analysis' modality='MRI'>
+            
+            <qsub>
+                <timeBase>0.05</timeBase>
+                <memoryBase>1</memoryBase>
+            </qsub>
+            
+            <permanenceofoutput>3</permanenceofoutput>
+            
+            <inputstreams>
+                <stream>MVPaa</stream>
+            </inputstreams>
+            
+            <outputstreams>
+                <stream>MVPaa_2nd</stream>
+            </outputstreams>
+            
+            <!-- Stats to be used in the 2nd level of MVPA:
+                'ttest' - parametric t-test
+                'signrank' - non-parametric signrank of data using contrast as reference -->
+            <statsType2nd>ttest</statsType2nd>
+        </currenttask>
+    </tasklist>
+</aap>
+

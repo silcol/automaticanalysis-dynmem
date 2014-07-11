@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        <currenttask mfile_alias='aamod_melodic_denoise' domain='session' desc='FSL MELODIC' modality='MRI'>
+            
+            <qsub>
+                <timeBase>3</timeBase>
+                <memoryBase>2</memoryBase>
+            </qsub>
+            
+            <permanenceofoutput>2</permanenceofoutput>
+            
+            ﻿<inputstreams>
+                <stream>epi_dicom_header</stream> 
+                <stream>epi</stream>
+                <!-- Recommended to mask out non-brain stuff for more accurate ICA -->
+                <stream>epiBETmask</stream>
+            </inputstreams>
+            
+            <outputstreams>
+                <stream>melodic</stream>
+                <stream>epi</stream> 
+            </outputstreams>
+            
+            <!-- MELODIC OPTIONS (default - make it verbose) -->
+            <MELODICoptions>-v --report --Oall</MELODICoptions>
+            
+            <!-- Only use if you don't have DICOM headers... -->
+            <TR></TR>
+            
+        </currenttask>
+    </tasklist>
+</aap>

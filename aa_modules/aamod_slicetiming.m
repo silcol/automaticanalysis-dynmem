@@ -1,0 +1,89 @@
+% AA module - slice timing
+% [aap,resp]=aamod_slicetiming(aap,task,subj,sess)
+% Corrects the slice time difference in 2D EPI sequences
+% Do not use on 3D EPI (it will not work!)
+% Rhodri Cusack MRC CBU 2004 based on original by Matthew Brett
+% Batching slice timing in SPM5
+% Tibor Auer MRC CBU Cambridge 2012-2013
+
+function [aap,resp]=aamod_slicetiming(aap,task,subj,sess)
+resp='';
+
+switch task
+    case 'domain'
+        resp='session';   % this module needs to be run once per session
+    case 'description'
+        resp='SPM8 slice timing';
+    case 'summary'
+        resp=sprintf('Perform slice timing, with TR %f and time to acquire single slice %f\n',aap.tasklist.currenttask.settings.TRs, aap.tasklist.currenttask.settings.slicetime);
+    case 'report'
+    case 'doit'
+        
+        % get the subdirectories in the main directory
+        dirn = aas_getsesspath(aap,subj,sess);
+        
+        % get files in this directory
+        % Old style, by prefix (still supported for now)
+        %imgs=aas_getimages(aap,subj,sess,aap.tasklist.currenttask.epiprefix,0,inf);
+        % New style, by stream
+        imgs=aas_getimages_bystream(aap,subj,sess,'epi');
+        
+        % get information from first file
+        first_img = deblank(imgs(1,:));
+        V = spm_vol(first_img);
+        if isfield(aap.options, 'NIFTI4D') && aap.options.NIFTI4D % 4D support [TA]
+			V = V(1); 
+		end
+        
+        % retrieve stuff from DICOM header
+        if aap.tasklist.currenttask.settings.autodetectSO == 1
+            % Get the headers from the file, so that we don't have to guess...
+            DICOMHEADERS=load(aas_getimages_bystream(aap,subj,sess,'epi_dicom_header'));
+            V = spm_vol(deblank(imgs(1,:)));
+            aap = aas_getSliceOrder(aap, V(1), DICOMHEADERS.DICOMHEADERS{1});
+            %aap = aas_getSliceOrder(aap, subj, sess, V(1));
+        end
+        if (length(aap.tasklist.currenttask.settings.TRs)==0)
+            DICOMHEADERS=load(aas_getimages_bystream(aap,subj,sess,'epi_dicom_header'));
+            aap.tasklist.currenttask.settings.TRs=DICOMHEADERS.DICOMHEADERS{1}.RepetitionTime/1000;
+        end
+        if (length(aap.tasklist.currenttask.settings.slicetime)==0)
+            aap.tasklist.currenttask.settings.slicetime=aap.tasklist.currenttask.settings.TRs/V(1).dim(3);
+        end
+        % Sets slice time information
+        % value 1 is time to acquire one slice
+        % value 2 is time between beginning of last slice
+        % and beginning of first slice of next volume
+        
+        if (max(aap.tasklist.currenttask.settings.sliceorder)>V(1).dim(3))
+            aas_log(aap,1,'aap.tasklist.currenttask.settings.sliceorder seems to contain values higher than the number of slices!\n');
+        end
+        
+        sl_times = [aap.tasklist.currenttask.settings.slicetime aap.tasklist.currenttask.settings.slicetime+(aap.tasklist.currenttask.settings.TRs-aap.tasklist.currenttask.settings.slicetime*V(1).dim(3))];
+        
+        % do slice timing correction, added refslice [de 200606]
+        spm_slice_timing(imgs,aap.tasklist.currenttask.settings.sliceorder,aap.tasklist.currenttask.settings.refslice ,sl_times);
+        
+        % Describe outputs
+        rimgs=[];
+        for k=1:size(imgs,1);
+            [pth nme ext]=fileparts(imgs(k,:));
+            rimgs=strvcat(rimgs,['a' nme ext]);
+        end
+        sessdir=aas_getsesspath(aap,subj,sess);
+        aap = aas_desc_outputs(aap,subj,sess,'epi',rimgs);
+        
+        sliceorder=aap.tasklist.currenttask.settings.sliceorder;
+        sliceorderfn=fullfile(dirn,'sliceorder.mat');
+        refslice=aap.tasklist.currenttask.settings.refslice;
+        save(sliceorderfn,'sliceorder','refslice');
+        aap = aas_desc_outputs(aap,subj,sess,'sliceorder',sliceorderfn);
+        
+    case 'checkrequirements'
+        if (length(aap.tasklist.currenttask.settings.sliceorder)==0) && aap.tasklist.currenttask.settings.autodetectSO == 0
+            aas_log(aap,1,'To avoid catastrophe, slice order no longer takes on a default value, and must be specified manually in user script.\nFor descending sequential 32 slices add aap.tasksettings.aamod_slicetiming.sliceorder=[32:-1:1];\n');
+        end
+    otherwise
+        aas_log(aap,1,sprintf('Unknown task %s',task));
+end
+return;

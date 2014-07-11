@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        <currenttask domain='subject' desc='Make T map volume from epi and model instances' modality='MRI'>
+            
+            <qsub>
+                <timeBase>0.5</timeBase>
+                <memoryBase>0.3</memoryBase>
+            </qsub>
+            
+            <permanenceofoutput>3</permanenceofoutput>
+            <targetname>face</targetname>
+            <sgolayK></sgolayK>
+            <sgolayF></sgolayF>
+            <covariatedeg>adaptive</covariatedeg>
+            <inputstreams>
+                <stream>pilab_epi</stream>
+                <stream>pilab_design</stream>
+            </inputstreams>
+            <outputstreams>
+                <stream>pilab_volume</stream>
+            </outputstreams>
+        </currenttask>
+    </tasklist>
+</aap>

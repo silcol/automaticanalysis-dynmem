@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        <currenttask domain='subject' desc='SPM structural statistics' modality='MRI'>
+            
+            <permanenceofoutput>2</permanenceofoutput>
+
+            <inputstreams>
+                <stream>native_grey</stream>
+                <stream>native_white</stream>
+                <stream>native_csf</stream>
+            </inputstreams>
+
+            <outputstreams>
+                <stream>structuralstats</stream>
+            </outputstreams>
+            
+        </currenttask>
+    </tasklist>
+</aap>
+   

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        <currenttask domain='study' mfile_alias='aamod_secondlevel_inddiff' desc='SPM second level individual differences' modality='MRI'>
+            
+            <qsub>
+                <timeBase>2</timeBase>
+                <memoryBase>2</memoryBase>
+            </qsub>
+            
+            <permanenceofoutput>3</permanenceofoutput>
+            
+            <inputstreams>
+                <stream>subject_behaviour</stream>
+                <stream>firstlevel_cons</stream>
+            </inputstreams>
+            
+            <outputstreams>
+                <stream>secondlevel_id_corr</stream>
+                <stream>secondlevel_id_tval</stream>
+            </outputstreams>
+            
+            
+            
+        </currenttask>
+    </tasklist>
+</aap>

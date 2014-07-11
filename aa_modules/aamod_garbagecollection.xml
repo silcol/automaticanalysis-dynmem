@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        <currenttask domain='study' desc='Clean up the garbage' modality='MRI'>
+            
+            <qsub>
+                <timeBase>2</timeBase>
+                <memoryBase>1</memoryBase>
+            </qsub>
+            
+            <permanenceofoutput>3</permanenceofoutput>
+            
+            <inputstreams>
+            </inputstreams>
+            
+            <outputstreams>
+            </outputstreams>
+            
+            <permanencethreshold desc='Which outputs to delete (typically set to 1 or 2 after preprocessing)'>0</permanencethreshold>
+            
+        </currenttask>
+    </tasklist>
+</aap>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        <currenttask domain='subject' desc='SPM unwarp and motion correction' modality='MRI'>
+            
+            <qsub>
+                <timeBase>0.4</timeBase>
+                <memoryBase>1</memoryBase>
+            </qsub>
+            
+            <permanenceofoutput>1</permanenceofoutput>
+            
+            <inputstreams>
+                <stream>realignment_parameter</stream>
+            </inputstreams>
+            
+            <outputstreams>
+            </outputstreams>  
+           
+        </currenttask>        
+    </tasklist>
+</aap>
+

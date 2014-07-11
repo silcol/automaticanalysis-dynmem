@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        <currenttask domain='subject' desc='listspikes' modality='MRI'>
+            
+            <qsub>
+                <timeBase>0.1</timeBase>
+                <memoryBase>0.1</memoryBase>
+            </qsub>
+            
+            <permanenceofoutput>3</permanenceofoutput>
+            
+            <inputstreams>
+                <stream>tsdiffana</stream>
+                <stream>realignment_parameter</stream>
+            </inputstreams>
+            
+            <outputstreams>
+                <stream>listspikes</stream>
+            </outputstreams>
+            
+            
+            <tmlimit desc='Threshold (in arbitary units) from baseline after which we count points as spikes'>5</tmlimit>
+            <tmmode desc='Units in which the tmlimit is in [absolute, std, rstd]'>rstd</tmmode>
+            <tmbaseline desc='Baseline for the mean variance between volumes [zero, mean, median, smooth]'>smooth</tmbaseline>
+            
+            <xyzlimit desc='Threshold in mm of movement'></xyzlimit> <!-- 0.5 -->
+            <rotlimit_degrees desc='Threshold in degrees of movement'></rotlimit_degrees> <!-- 0.3 -->
+            <FDlimit desc='Framewise displacement limit in mm'>0.5</FDlimit>
+            <radiuscortex desc='Approximate radius of the cortex in mm (Power et al, 2012 states this is ~50mm in adults'>50</radiuscortex>
+            
+        </currenttask>
+    </tasklist>
+</aap>
